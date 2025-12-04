@@ -1,10 +1,10 @@
 import { Ionicons } from '@expo/vector-icons';
 import { Picker } from '@react-native-picker/picker';
-import { LinearGradient } from 'expo-linear-gradient';
 import * as ImagePicker from 'expo-image-picker';
+import { LinearGradient } from 'expo-linear-gradient';
 import * as Location from 'expo-location';
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
-import { get, push, ref as databaseRef, update } from 'firebase/database';
+import { ref as databaseRef, get, push, update } from 'firebase/database';
 import { getDownloadURL, ref as storageRef, uploadBytes } from 'firebase/storage';
 import React, { useEffect, useMemo, useState } from 'react';
 import { ActivityIndicator, Alert, Image, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
@@ -88,17 +88,18 @@ export default function FormInputOtherSightings() {
     };
 
     const pickImage = async () => {
-        const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
-        if (status !== 'granted') {
+        const permission = await ImagePicker.requestMediaLibraryPermissionsAsync();
+        if (!permission.granted) {
             Alert.alert('Izin Dibutuhkan', 'Berikan akses galeri untuk mengunggah foto.');
             return;
         }
+
         const result = await ImagePicker.launchImageLibraryAsync({
             mediaTypes: ImagePicker.MediaTypeOptions.Images,
-            allowsEditing: true,
             quality: 0.7,
         });
-        if (!result.canceled && result.assets?.length) {
+
+        if (!result.canceled && result.assets && result.assets.length > 0) {
             setPhotoUri(result.assets[0].uri);
         }
     };
@@ -132,10 +133,6 @@ export default function FormInputOtherSightings() {
         }
         if (!latitude || !longitude) {
             Alert.alert('Validasi', 'Ambil lokasi GPS terlebih dahulu.');
-            return;
-        }
-        if (!photoUri) {
-            Alert.alert('Validasi', 'Foto dokumentasi wajib diunggah.');
             return;
         }
 
@@ -278,7 +275,7 @@ export default function FormInputOtherSightings() {
                         </View>
 
                         <View style={styles.inputGroup}>
-                            <Text style={styles.label}>Foto Dokumentasi *</Text>
+                            <Text style={styles.label}>Foto Dokumentasi (opsional)</Text>
                             <View style={styles.photoSection}>
                                 {photoUri ? (
                                     <Image source={{ uri: photoUri }} style={styles.photoPreview} />
@@ -298,12 +295,26 @@ export default function FormInputOtherSightings() {
                         </View>
 
                         <View style={styles.inputGroup}>
-                            <Text style={styles.label}>Lokasi GPS *</Text>
+                            <Text style={styles.label}>Lokasi Koordinat *</Text>
                             <View style={styles.locationBox}>
-                                <Text style={styles.locationText}>Latitude: {latitude || '-'}</Text>
-                                <Text style={styles.locationText}>Longitude: {longitude || '-'}</Text>
-                                <Text style={styles.locationText}>Akurasi: {accuracy || '-'}</Text>
+                                <TextInput
+                                    style={styles.input}
+                                    placeholder="Latitude"
+                                    keyboardType="numeric"
+                                    placeholderTextColor="#999"
+                                    value={latitude}
+                                    onChangeText={setLatitude}
+                                />
+                                <TextInput
+                                    style={[styles.input, { marginTop: 10 }]}
+                                    placeholder="Longitude"
+                                    keyboardType="numeric"
+                                    placeholderTextColor="#999"
+                                    value={longitude}
+                                    onChangeText={setLongitude}
+                                />
                             </View>
+                            <Text style={styles.locationText}>Akurasi GPS: {accuracy || '-'}</Text>
                             <TouchableOpacity
                                 style={[styles.gpsButton, { backgroundColor: Colors.otherSightingsBlue }]}
                                 onPress={getCoordinates}
