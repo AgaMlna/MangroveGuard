@@ -1,50 +1,52 @@
-# Welcome to your Expo app 👋
+🌳 MangroveGuard 🛡️
+Aplikasi Konservasi Mangrove Berbasis Komunitas
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+✨ Deskripsi
+ProdukMangroveGuard adalah aplikasi mobile berbasis komunitas (Citizen Science) yang dirancang untuk memantau dan mendokumentasikan kondisi ekosistem mangrove. Aplikasi ini memanfaatkan para konservasionis, peneliti, dan masyarakat umum untuk secara aktif berpartisipasi dalam perlindungan hutan mangrove dengan merekam data lapangan seperti observasi, polusi, dan gangguan.Dengan MangroveGuard, kita dapat:Melakukan Observasi Plot: Mencatat data detail tentang jenis, kesehatan, dan kerapatan mangrove.Mendokumentasikan Ancaman: Merekam kejadian polusi (seperti tumpahan minyak dan sampah plastik) dan gangguan (seperti penebangan ilegal).Mengidentifikasi Spesies: Mengakses panduan mangrove untuk identifikasi cepat.Memvisualisasikan Data: Melihat semua rekaman data dan plot observasi pada peta proyek interaktif.Tujuan utama dari MangroveGuard adalah menyediakan data real-time dan terverifikasi untuk mendukung upaya mitigasi, pengambilan keputusan konservasi yang lebih baik, serta meningkatkan kesadaran publik terhadap pentingnya ekosistem mangrove.
 
-## Get started
+🛠️ Komponen Pembangun 
+ProdukAplikasi MangroveGuard dibangun dengan beberapa komponen fungsional utama, yang memungkinkan pengguna untuk melakukan kegiatan pemantauan di lapangan:
+1. Sistem Pencatatan Data LapanganPencatatan Observasi: Mendokumentasikan kondisi plot, termasuk Jenis Mangrove (cth., Rhizophora mucronata), DBH, Tinggi, Kerapatan, Kondisi Kesehatan (Sehat, Sedang Stres, Mati), dan Kondisi Substrat (Lumpur, Pasir, Campuran). * Pencatatan Polusi: Merekam detail Jenis Polusi (cth., Sampah plastik, Minyak/Oil spill), Tingkat Keparahan (Ringan, Sedang, Berat), dan Luas/Sebaran Polusi yang terdampak. * Pencatatan Gangguan: Mendokumentasikan Jenis Gangguan (cth., Penebangan ilegal), Skala Kerusakan (Kecil, Sedang, Luas), dan perkiraan Area Terdampak ($\text{m}^2$). * Pencatatan Lain-Lain (Other Sightings): Untuk merekam penampakan hewan atau spesies langka lainnya di area mangrove.Ringkasan Data: Halaman utama menampilkan statistik total Observations, Pollution, Disturbance, dan Other Sightings yang sudah direkam.
+2. Panduan Mangrove (Learn)Fitur untuk identifikasi spesies, menyajikan Nama Ilmiah (cth., Acrostichum aureum), Status Konservasi (LC - Least Concern), Distribusi Alami, Nama Umum (Vernacular names), dan Tipe Tanaman.
+3. Peta Proyek InteraktifMemvisualisasikan lokasi semua plot observasi dan titik data lain yang telah direkam (Polusi, Gangguan) di atas peta interaktif.Mendukung tampilan peta STANDARD, SATELLITE, dan TERRAIN.
+4. Manajemen Data Pengguna (My Records)Menampilkan daftar lengkap data yang telah direkam oleh pengguna, lengkap dengan detail waktu, koordinat, dan deskripsi.Terdapat opsi untuk EDIT, HAPUS, dan melihat lokasi rekaman pada GOOGLE MAPS.
 
-1. Install dependencies
+Jenis
+Data,Sumber/Aksi,Deskripsi
+Data Geospasial,Google Maps/Satellit,Digunakan untuk tampilan peta (Project Map) dan penentuan lokasi koordinat rekaman.
+Data Input Pengguna,Crowdsourced / Relawan,"Data observasi, polusi, dan gangguan yang dimasukkan langsung oleh pengguna di lapangan."
+Data Spesies,"Basis Data Konservasi (IUCN Status, dll.)","Informasi detail mengenai taksonomi, status, dan deskripsi spesies mangrove dan asosiasi."
+Data Log User,Sistem Aplikasi,Informasi login (Email/Password) untuk autentikasi dan otorisasi pengguna. 
 
-   ```bash
-   npm install
-   ```
+📸 Tangkapan Layar Komponen Penting
+Berikut adalah tampilan visual dari fitur-fitur inti aplikasi MangroveGuard:
 
-2. Start the app
+1. Halaman Utama & Ringkasan Data
+   <img width="452" height="982" alt="Screenshot 2025-12-05 023059" src="https://github.com/user-attachments/assets/d4140901-eab3-4e61-aa86-9fa3a023d1bd" />
+   <img width="453" height="981" alt="Screenshot 2025-12-05 030659" src="https://github.com/user-attachments/assets/94464e8a-ba99-444a-b2d0-4feb30054738" />
 
-   ```bash
-   npx expo start
-   ```
+3. Pembelajaran Mangrove
+  <img width="452" height="977" alt="Screenshot 2025-12-05 023155" src="https://github.com/user-attachments/assets/bff866be-b1f4-40e7-b7cf-81068528a01d" />
+<img width="452" height="983" alt="Screenshot 2025-12-05 023209" src="https://github.com/user-attachments/assets/90cc5751-3c49-405f-91f1-63001911d310" />
 
-In the output, you'll find options to open the app in a
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+5. Formulir Pencatatan Mangrove
+   <img width="453" height="978" alt="Screenshot 2025-12-05 023224" src="https://github.com/user-attachments/assets/5e1d58eb-fbc8-459f-bf46-425983a6fe78" />
+   <img width="450" height="981" alt="Screenshot 2025-12-05 023235" src="https://github.com/user-attachments/assets/abef4355-9836-42a4-acf3-e4b5dc752c81" />
+   <img width="450" height="978" alt="Screenshot 2025-12-05 023246" src="https://github.com/user-attachments/assets/626147b7-a407-4b0a-ae8f-64e8e11300fd" />
+   <img width="452" height="979" alt="Screenshot 2025-12-05 023255" src="https://github.com/user-attachments/assets/4cbae1e9-a8b3-4e04-adc6-d1d77a296cac" />
+   <img width="453" height="984" alt="Screenshot 2025-12-05 023304" src="https://github.com/user-attachments/assets/4d3d2c52-be55-446a-aa09-6839d4fed4e6" />
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+6. Tampilan Hasil Pencatatan
+   <img width="456" height="987" alt="Screenshot 2025-12-05 023325" src="https://github.com/user-attachments/assets/cba8e715-bcb8-442c-9183-05e9a06b93c1" />
 
-## Get a fresh project
+7. Peta Ptoyek
+   <img width="452" height="975" alt="Screenshot 2025-12-05 023335" src="https://github.com/user-attachments/assets/1d88300f-2db8-48b6-80e6-8d4afe6cd61e" />
 
-When you're ready, run:
 
-```bash
-npm run reset-project
-```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
 
-## Learn more
 
-To learn more about developing your project with Expo, look at the following resources:
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+   
 
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
